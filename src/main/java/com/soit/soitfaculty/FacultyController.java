@@ -1,10 +1,13 @@
 package com.soit.soitfaculty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.soit.soitfaculty.model.Faculty;
@@ -14,7 +17,7 @@ import com.soit.soitfaculty.model.Faculty;
 public class FacultyController {
 	
 	//Upload faculty info
-	private List<Faculty> thefaculties;
+	private List<Faculty> theFaculties;
 	
 	
 	@PostConstruct
@@ -26,13 +29,24 @@ public class FacultyController {
 		Faculty fac3 = new Faculty(3, "Laura", "West", "Laura@uc.edu");
 		
 		//Create our List
+		theFaculties = new ArrayList<>();
 		
 		
 		//Add our List
-		
+		theFaculties.add(fac1);
+		theFaculties.add(fac2);
+		theFaculties.add(fac3);
 	}
 	
 	//Mapping for "/list"
-	
+	@GetMapping("/list")
+	public String listFaculties(Model theModel) {
+		
+				
+		//Add Faculties to the Spring Model
+		theModel.addAttribute("faculties", theFaculties);
+		
+		return "list-faculties";
+	}
 
 }
