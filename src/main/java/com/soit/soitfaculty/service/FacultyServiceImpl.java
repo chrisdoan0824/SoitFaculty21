@@ -22,7 +22,7 @@ public class FacultyServiceImpl implements FacultyService {
 	@Override
 	public List<Faculty> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return facultyRepository.findAll();
 	}
 
 	@Override
