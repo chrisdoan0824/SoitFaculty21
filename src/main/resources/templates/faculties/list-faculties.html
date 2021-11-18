@@ -16,15 +16,17 @@
 	<hr>
 	
 	<!-- Create a button to add new faculty -->
-	<a th:href="@{/Faculties/viewAddForm}" class="btn btn-dark btn-sm mb-2">Add New Faculty</a>
+	<a th:href="@{/Faculties/viewAddForm}" 
+	class="btn btn-dark btn-sm mb-2">Add New Faculty</a>
 	
-	<table class="table table-bordered">
+	<table class="table table-bordered table-dark">
 		<thead>
-			<tr class="bg-danger">
+			<tr class="table-danger">
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Email</th>
 				<th>Title</th>
+				<th>Update Info</th>
 			<tr />
 		<thead />
 		<tbody>
@@ -34,6 +36,11 @@
 		<td th:Text="${theFaculty.email}"/>
 		<td th:Text="${theFaculty.Title}"/>
 		
+		<!-- Update Button -->
+		<td>
+		<a th:href="@{/Faculties/viewUpdateForm(facultyId=${theFaculty.id})}" class="btn btn-light btn-sm" >Update</a>
+		<a th:href="@{/Faculties/delete(facultyId=${theFaculty.id})}" class="btn btn-danger btn-sm" onclick="if(!(confirm('Please confirm that you want to delete this faculty')))return false" >Delete</a>
+		</td>
 		</tbody>
 	</table>
 </div>
